@@ -6,6 +6,6 @@
 
 @layer base {
   body {
-    @apply bg-lightBlueBg
+    @apply bg-lightBlueBg dark:bg-veryDarkGray max-w-[100vw]
   }
 }

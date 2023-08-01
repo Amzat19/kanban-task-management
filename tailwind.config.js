@@ -10,6 +10,9 @@ module.exports = {
         header: "clamp(1.125rem, 1.25vw, 1.5rem)",
         medium: "0.9375rem"
       },
+      boxShadow: {
+        'md': '0px 4px 6px 0px rgba(54, 78, 126, 0.10);'
+      }
     },
     screens: {
       'md': '768px',

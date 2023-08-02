@@ -1,4 +1,21 @@
-const Board = () => {
+import useViewport from '@/utils/useViewport';
+import PurpleEyeBox from '../../public/assets/purple-eye-box.svg';
+import ViewTask from './viewTask';
+import { useState } from 'react';
+
+interface BoardProps {
+    isSideBarOpen: boolean;
+    toggleSideBar: () => void;
+}
+
+const Board: React.FC<BoardProps> = ({ isSideBarOpen, toggleSideBar }) => {
+    const { width: viewportWidth }: { width: number } = useViewport();
+    const [isTaskOpen, setIsTaskOpen] = useState(false);
+
+    const toggleTask = () => {
+        setIsTaskOpen(!isTaskOpen);
+    }
+
     return (
         <section className="flex gap-6 w-full overflow-x-auto mt-6 px-6">
             <div>
@@ -6,10 +23,11 @@ const Board = () => {
                     <span></span>
                     <h2 className="text-lightGray text-xs font-semibold tracking-[0.15rem] mb-6">TODO (4)</h2>
                 </div>
-                <article className="bg-white w-[17.5rem] h-[5.5rem] px-4 py-[1.44rem] rounded-lg shadow-md mb-5 dark:bg-darkGray">
+                <article className="bg-white w-[17.5rem] h-[5.5rem] px-4 py-[1.44rem] rounded-lg shadow-md mb-5 dark:bg-darkGray" onClick={() => toggleTask()}>
                     <h3 className="text-medium font-bold text-darkBlack dark:text-white">Build UI for onboarding flow</h3>
                     <p className="text-xs text-lightGray font-semibold">0 of 3 substasks</p>
                 </article>
+                {isTaskOpen ? <ViewTask toggleTask={toggleTask} isTaskOpen={isTaskOpen} /> : null}
                 <article className="bg-white w-[17.5rem] h-[5.5rem] px-4 py-[1.44rem] rounded-lg shadow-md mb-5 dark:bg-darkGray">
                     <h3 className="text-medium font-bold text-darkBlack dark:text-white">Build UI for onboarding flow</h3>
                     <p className="text-xs text-lightGray font-semibold">0 of 3 substasks</p>
@@ -60,6 +78,7 @@ const Board = () => {
                     <span className="text-header text-lightGray font-bold">+ New Column</span>
                 </article>
             </div>
+            {viewportWidth > 768 && !isSideBarOpen ? <PurpleEyeBox className='absolute bottom-8 left-0' onClick={() => toggleSideBar()} /> : null}
         </section>
     )
 }

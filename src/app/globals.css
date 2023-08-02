@@ -9,3 +9,11 @@
     @apply bg-lightBlueBg dark:bg-veryDarkGray max-w-[100vw]
   }
 }
+
+@layer utilities {
+  .fill-svg-purple {
+    path {
+      fill: '#635FC7';
+    }
+  }
+}

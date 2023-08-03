@@ -13,7 +13,7 @@ const ViewTask: React.FC<ViewTaskProps> = ({ toggleTask, isTaskOpen }) => {
 
     return (
         <dialog open={isTaskOpen} className='bg-[#000] bg-opacity-60 min-h-screen w-screen absolute top-0  flex items-center justify-center py-48' onClick={() => toggleTask()}>
-            <article className='bg-white w-[21.4375rem] p-6 rounded-lg dark:bg-darkGray' onClick={stopElementEventPropagation}>
+            <article className='bg-white w-[21.4375rem] p-6 rounded-lg dark:bg-darkGray md:w-[30rem]' onClick={stopElementEventPropagation}>
                 <div className='flex justify-between items-center mb-4'>
                     <h3 className='text-lg font-bold leading-5 w-64 dark:text-white'>Research pricing points of various competitors and trial different business models</h3>
                     <Ellipses />

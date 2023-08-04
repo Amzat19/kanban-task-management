@@ -30,7 +30,8 @@ module.exports = {
       'lightBlueBg': '#F4F7FD',
       'white': '#FFF',
       'red': '#EA5555',
-      'red-hover': '#FF9898'
+      'red-hover': '#FF9898',
+      'grey-button': 'rgba(99, 95, 199, 0.10)'
     }
   },
   plugins: [],

@@ -6,12 +6,18 @@ interface SelectBoardProps {
     isSelectBoardOpen: boolean;
     theme: string | undefined;
     setTheme: (theme: string) => void;
+    toggleSelectBoard: () => void;
 }
 
-const SelectBoard: React.FC<SelectBoardProps> = ({ isSelectBoardOpen, theme, setTheme }) => {
+const SelectBoard: React.FC<SelectBoardProps> = ({ isSelectBoardOpen, theme, setTheme, toggleSelectBoard }) => {
+
+    const stopElementEventPropagation = (event: React.MouseEvent<HTMLElement>) => {
+        event.stopPropagation(); // Prevent the click event from bubbling up to the parent dialog
+    };
+
     return (
-        <dialog open={isSelectBoardOpen} className='absolute z-10 top-16 h-screen w-screen bg-[#000] bg-opacity-60'>
-            <article className='bg-white w-[16.5rem] mt-4 rounded-lg p-4 mx-auto dark:bg-darkGray'>
+        <dialog open={isSelectBoardOpen} className='absolute top-16 h-screen w-screen bg-[#000] bg-opacity-60' onClick={() => toggleSelectBoard()}>
+            <article className='bg-white w-[16.5rem] mt-4 rounded-lg p-4 mx-auto dark:bg-darkGray' onClick={stopElementEventPropagation}>
                 <nav>
                     <ul>
                         <li className='px-[1.6rem] text-lightGray text-xs font-medium pb-[1.1rem] w-max tracking-[0.15rem]'>ALL BOARDS (3)</li>

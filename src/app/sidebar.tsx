@@ -4,6 +4,9 @@ import BoardLogo from '../../public/assets/board.svg';
 import EyeSlash from '../../public/assets/eye-slash.svg';
 import Moon from '../../public/assets/moon.svg';
 import Sunlight from '../../public/assets/sunlight.svg';
+import AddNewBoard from './addNewBoard';
+import { useState } from 'react';
+import EditBoard from './editBoard';
 
 interface SideBarProps {
     theme: string | undefined;
@@ -12,6 +15,17 @@ interface SideBarProps {
 }
 
 const SideBar: React.FC<SideBarProps> = ({ theme, setTheme, toggleSideBar }) => {
+    const [isAddNewBoardOpen, setIsAddNewBoardOpen] = useState(false);
+    const [isEditBoardOpen, setEditBoardOpen] = useState(false);
+
+    const toggleAddNewBoard = () => {
+        setIsAddNewBoardOpen(!isAddNewBoardOpen);
+    }
+
+    const toggleEditBoard = () => {
+        setEditBoardOpen(!isEditBoardOpen);
+    }
+
     return (
         <aside className='bg-white min-h-screen w-[16.25rem] flex flex-col justify-between border-r border-r-lightBlue flex-none desktop:w-[18.75rem] dark:bg-darkGray dark:border-r-gray'>
             <div className='pt-8'>
@@ -21,10 +35,11 @@ const SideBar: React.FC<SideBarProps> = ({ theme, setTheme, toggleSideBar }) => 
                 <nav>
                     <ul>
                         <li className='px-[1.6rem] text-lightGray text-xs font-medium pb-[1.1rem]'>ALL BOARDS (3)</li>
-                        <li className='px-[1.6rem] flex items-center h-12 gap-2 text-medium font-semibold text-lightGray'>
+                        <li className='px-[1.6rem] flex items-center h-12 gap-2 text-medium font-semibold text-lightGray' onClick={() => toggleEditBoard()}>
                             <BoardLogo />
                             Platform Launch
                         </li>
+                        <EditBoard isEditBoardOpen={isEditBoardOpen} toggleEditBoard={toggleEditBoard} />
                         <li className='px-[1.6rem] flex items-center h-12 gap-2 text-medium font-semibold text-lightGray'>
                             <BoardLogo />
                             Marketing Plan
@@ -33,10 +48,11 @@ const SideBar: React.FC<SideBarProps> = ({ theme, setTheme, toggleSideBar }) => 
                             <BoardLogo />
                             Roadmap
                         </li>
-                        <li className='px-[1.6rem] flex items-center h-12 gap-2 text-medium font-semibold text-purple'>
+                        <li className='px-[1.6rem] flex items-center h-12 gap-2 text-medium font-semibold text-purple' onClick={() => toggleAddNewBoard()}>
                             <BoardLogo className='fill-svg-purple' />
                             + Create New Board
                         </li>
+                        <AddNewBoard isAddNewBoardOpen={isAddNewBoardOpen} toggleAddNewBoard={toggleAddNewBoard} />
                     </ul>
                 </nav>
             </div>

@@ -1,18 +1,20 @@
 import Close from '../../public/assets/close.svg';
 
-interface AddNewTaskProps {
-    isAddNewTaskOpen: boolean;
-    toggleAddNewTask: () => void;
+interface EditTaskProps {
+    isEditTaskOpen: boolean;
+    toggleEditTask: () => void;
 }
 
-const AddNewTask: React.FC<AddNewTaskProps> = ({ isAddNewTaskOpen, toggleAddNewTask }) => {
+const EditTask: React.FC<EditTaskProps> = ({ isEditTaskOpen, toggleEditTask }) => {
+
     const stopElementEventPropagation = (event: React.MouseEvent<HTMLElement>) => {
         event.stopPropagation(); // Prevent the click event from bubbling up to the parent dialog
     };
+
     return (
-        <dialog open={isAddNewTaskOpen} onClick={() => toggleAddNewTask()} className="bg-[#000] bg-opacity-60 min-h-screen w-screen absolute top-0 py-48">
-            <article className="bg-white w-[21.4375rem] p-6 rounded-lg mx-auto dark:bg-darkGray md:w-[30rem]">
-                <h2 className="text-darkBlack text-lg font-bold mb-6">Add New Task</h2>
+        <dialog open={isEditTaskOpen} onClick={() => toggleEditTask()} className="bg-[#000] bg-opacity-60 min-h-screen w-screen absolute top-0 py-48">
+            <article className="bg-white w-[21.4375rem] p-6 rounded-lg mx-auto dark:bg-darkGray md:w-[30rem]" onClick={stopElementEventPropagation}>
+                <h2 className="text-darkBlack text-lg font-bold mb-6">Edit Task</h2>
                 <form>
                     <label className="text-lightGray text-xs font-semibold grid gap-2 mb-6">
                         Title
@@ -47,4 +49,4 @@ const AddNewTask: React.FC<AddNewTaskProps> = ({ isAddNewTaskOpen, toggleAddNewT
     )
 }
 
-export default AddNewTask;
+export default EditTask

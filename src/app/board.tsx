@@ -1,6 +1,7 @@
 import useViewport from '@/utils/useViewport';
 import PurpleEyeBox from '../../public/assets/purple-eye-box.svg';
 import ViewTask from './viewTask';
+import EditTask from './editTask';
 import { useState } from 'react';
 
 interface BoardProps {
@@ -11,9 +12,14 @@ interface BoardProps {
 const Board: React.FC<BoardProps> = ({ isSideBarOpen, toggleSideBar }) => {
     const { width: viewportWidth }: { width: number } = useViewport();
     const [isTaskOpen, setIsTaskOpen] = useState(false);
+    const [isEditTaskOpen, setIsEditTaskOpen] = useState(false);
 
     const toggleTask = () => {
         setIsTaskOpen(!isTaskOpen);
+    }
+
+    const toggleEditTask = () => {
+        setIsEditTaskOpen(!isEditTaskOpen);
     }
 
     return (
@@ -27,11 +33,12 @@ const Board: React.FC<BoardProps> = ({ isSideBarOpen, toggleSideBar }) => {
                     <h3 className="text-medium font-bold text-darkBlack dark:text-white">Build UI for onboarding flow</h3>
                     <p className="text-xs text-lightGray font-semibold">0 of 3 substasks</p>
                 </article>
-                {isTaskOpen ? <ViewTask toggleTask={toggleTask} isTaskOpen={isTaskOpen} /> : null}
-                <article className="bg-white w-[17.5rem] h-[5.5rem] px-4 py-[1.44rem] rounded-lg shadow-md mb-5 dark:bg-darkGray">
+                <ViewTask toggleTask={toggleTask} isTaskOpen={isTaskOpen} />
+                <article className="bg-white w-[17.5rem] h-[5.5rem] px-4 py-[1.44rem] rounded-lg shadow-md mb-5 dark:bg-darkGray" onClick={() => toggleEditTask()}>
                     <h3 className="text-medium font-bold text-darkBlack dark:text-white">Build UI for onboarding flow</h3>
                     <p className="text-xs text-lightGray font-semibold">0 of 3 substasks</p>
                 </article>
+                <EditTask isEditTaskOpen={isEditTaskOpen} toggleEditTask={toggleEditTask} />
                 <article className="bg-white w-[17.5rem] h-[5.5rem] px-4 py-[1.44rem] rounded-lg shadow-md mb-5 dark:bg-darkGray ">
                     <h3 className="text-medium font-bold text-darkBlack dark:text-white">Build UI for onboarding flow</h3>
                     <p className="text-xs text-lightGray font-semibold">0 of 3 substasks</p>

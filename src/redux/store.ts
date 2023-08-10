@@ -1,7 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { boardSlice } from "./features/boards";
+import { modalsSlice } from "./features/modals";
 
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        boards: boardSlice.reducer,
+        modals: modalsSlice.reducer
+    },
     devTools: process.env.NODE_ENV !== "production",
 });
 

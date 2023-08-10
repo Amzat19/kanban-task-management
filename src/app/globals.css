@@ -6,14 +6,35 @@
 
 @layer base {
   body {
-    @apply bg-lightBlueBg dark:bg-veryDarkGray max-w-[100vw]
+    @apply bg-lightBlueBg dark:bg-veryDarkGray max-w-[100vw] min-h-screen
   }
 }
 
 @layer utilities {
   .fill-svg-purple {
     path {
-      fill: '#635FC7';
+      fill: #635FC7;
     }
   }
+
+  .fill-svg-white {
+    path {
+      fill: white;
+    }
+  }
+
+  .fill-svg-red:hover {
+    path {
+      fill: #EA5555;
+    }
+  }
+
+  .boardTask:hover h3 {
+    color:#635FC7
+  }
+
+  .newColumn:hover span {
+    color: #635FC7;
+  }
+
 }

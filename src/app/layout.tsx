@@ -19,11 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} relative`}>
         <ThemeProvider attribute='class'>
-          {/* <Providers> */}
-          {children}
-          {/* </Providers> */}
+          <Providers>
+            {children}
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

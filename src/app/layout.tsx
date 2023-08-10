@@ -7,7 +7,7 @@ import { ThemeProvider } from 'next-themes'
 
 const inter = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Kanban Task Management Application',
   description: 'An application to manage your tasks',
 }
